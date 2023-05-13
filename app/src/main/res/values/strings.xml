@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">EletricCarApp</string>
+    <string name="tvAppName">Eletric Car</string>
+    <string name="tvCar">Carros</string>
+    <string name="ivDescriptionPanamera">Panamera</string>
+    <string name="tvFavorite">Favoritos</string>
+    <string name="tvValue">Preço</string>
+    <string name="tvBatery">Bateria</string>
+    <string name="tvPotency">Potencia</string>
+    <string name="tvRecharge">Recarga</string>
+    <string name="etKiloWhValue">kWh Abastecido</string>
+    <string name="etTraveledDistanceKmh">Distância percorrida (Km/h)</string>
+    <string name="btnCalculate">Calcular</string>
+    <string name="btnOpenMathScreen">Abrir Calculo</string>
+    <string name="tvCalculateAutonomy">Calcular Autonomia</string>
+    <string name="resultAutonomy">%s kWh consumido por Km</string>
+</resources>
