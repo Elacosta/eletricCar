@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.elacosta.eletriccarapp.R
 import com.elacosta.eletriccarapp.data.CarFactory
 import com.elacosta.eletriccarapp.ui.adapter.CarAdapter
+import com.elacosta.eletriccarapp.ui.adapter.TabAdapter
+import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var btnOpenMathScreen: Button
-    lateinit var carList: RecyclerView
+    lateinit var tlMainScreen : TabLayout
+    lateinit var vpMainScreen : ViewPager2
 
     //função OnCreate do app
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,27 +25,53 @@ class MainActivity : AppCompatActivity() {
 
         //Puxa as funções da tela
         setupView()
-        setupList()
         setupListener()
+        setupTab()
     }
 
     //Conecta as variaveis com o conteudo do Layout
     fun setupView() {
-        btnOpenMathScreen = findViewById(R.id.btnOpenCalculateScreen)
-        carList = findViewById(R.id.rvMainScreen)
+        tlMainScreen = findViewById(R.id.tlMain)
+        vpMainScreen = findViewById(R.id.vpMainScreen)
     }
 
-    //Conecta a lista de carros com o Adapter e puxa ele para a tela
-    fun setupList() {
-        val data = CarFactory.list
-        val adapter = CarAdapter(data)
-        carList.adapter = adapter
+    fun setupTab() {
+        val tabAdapter = TabAdapter(this)
+        vpMainScreen.adapter = tabAdapter
     }
 
     //Ações realizadas em tela
     fun setupListener() {
-        btnOpenMathScreen.setOnClickListener {
-            startActivity(Intent(this, CalculateConsumptionActivity::class.java))
-        }
+        setupTabListener()
+    }
+
+    fun setupTabListener() {
+        //gerenciamento do click do usuario na tab
+        tlMainScreen.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            //No momento que a tab for selecionada
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                //Checa se o item é ou não Null
+                tab?.let {
+                    vpMainScreen.currentItem = it.position
+                }
+            }
+
+            //No momento que ela não está mais selecionada
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            //Momento em que a tab é selecionada novamente
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+        //garante que a transição seja feita visualmente
+        vpMainScreen.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                tlMainScreen.getTabAt(position)?.select()
+            }
+        })
     }
 }

@@ -16,17 +16,17 @@ object CarFactory {
             urlPhoto = "url"
         ),
         Car(id = 2,
-        value = "860000",
-        potency = "250 cv",
-        batery = "300 KWh",
-        recharge = "1 hour",
+        value = "820000",
+        potency = "310 cv",
+        batery = "520 KWh",
+        recharge = "2 hour",
         urlPhoto = "url"
     ),
-        Car(id = 2,
-            value = "860000",
-            potency = "250 cv",
-            batery = "300 KWh",
-            recharge = "1 hour",
+        Car(id = 3,
+            value = "890000",
+            potency = "340 cv",
+            batery = "670 KWh",
+            recharge = "30 min",
             urlPhoto = "url"
         )
     )

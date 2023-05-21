@@ -15,4 +15,5 @@
     <string name="tvCalculateAutonomy">Calcular Autonomia</string>
     <string name="resultAutonomy">%s kWh consumido por Km</string>
     <string name="closeImage">CloseImage</string>
+    <string name="opencalculator">OpenCalculator</string>
 </resources>
